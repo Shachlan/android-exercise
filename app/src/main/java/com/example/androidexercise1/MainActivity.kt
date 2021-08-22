@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val intent = Intent(this, ContactDetailActivity::class.java).apply {
-            putExtra("NAME", "G pink");
+            putExtra("NAME", "G pink")
             putExtra("PHONE", "0000")
             putExtra("EMAIL", "g-pink@png")
             putExtra("IMAGE", "gPink.png")
