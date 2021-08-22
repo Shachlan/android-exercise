@@ -13,10 +13,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import android.widget.Toast
+
+
+
 
 class Contact(val name:String, val phone:String, val imageURL: String, val email: String? = null )
 
-class ContactsAdapter(private val contacts: Array<Contact>) :
+class ContactsAdapter(private val contacts: Array<Contact>, private val contactSelected: (Contact) -> Unit) :
     RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
 
     /**
@@ -25,10 +29,12 @@ class ContactsAdapter(private val contacts: Array<Contact>) :
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView
+        val coreView:View
 
         init {
             // Define click listener for the ViewHolder's View.
             textView = view.findViewById(R.id.textView)
+            coreView = view
         }
     }
 
@@ -57,6 +63,9 @@ class ContactsAdapter(private val contacts: Array<Contact>) :
         // Get element from your contacts at this position and replace the
         // contents of the view with that element
         viewHolder.textView.text = contacts[position].name
+        viewHolder.coreView.setOnClickListener(View.OnClickListener { view ->
+            contactSelected(contacts[position])
+        })
     }
 
     // Return the size of your contacts (invoked by the layout manager)

@@ -3,6 +3,7 @@ package com.example.androidexercise1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import androidx.recyclerview.widget.RecyclerView
@@ -49,15 +50,18 @@ class MainActivity : AppCompatActivity() {
             Contact("s red + email", "4567", "sRed.png", "foo@bar"),
             Contact("u gold + email", "5678", "uGold.png", "foo@bar"),
             Contact("u metal + email", "6789", "uMetal.png", "foo@bar"))
-        val adapter = ContactsAdapter(contacts)
+        val adapter = ContactsAdapter(contacts,  fun(contact:Contact): Unit {
+            val intent = Intent(this, ContactDetailActivity::class.java).apply {
+                putExtra("NAME", contact.name)
+                putExtra("PHONE", contact.phone)
+                putExtra("IMAGE", contact.imageURL)
+                if (contact.email != null) {
+                    putExtra("EMAIL", contact.email)
+                }
+            }
+            startActivity(intent)
+        })
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-//        val intent = Intent(this, ContactDetailActivity::class.java).apply {
-//            putExtra("NAME", "G pink")
-//            putExtra("PHONE", "0000")
-//            putExtra("EMAIL", "g-pink@png")
-//            putExtra("IMAGE", "gPink.png")
-//        }
-//        startActivity(intent)
     }
 }
