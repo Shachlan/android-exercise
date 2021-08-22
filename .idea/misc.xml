@@ -6,6 +6,8 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.22708333333333333" />
         <entry key="app/src/main/res/layout/activity_contact_detail.xml" value="0.17074275362318841" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20108695652173914" />
+        <entry key="app/src/main/res/layout/contacts_item.xml" value="0.1641337386018237" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2777777777777778" />
       </map>
     </option>
   </component>
